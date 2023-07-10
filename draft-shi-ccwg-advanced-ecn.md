@@ -12,8 +12,8 @@ obsoletes:
 updates:
 # date: 2022-02-02 -- date is filled in automatically by xml2rfc if not given
 
-area: Transport
-workgroup: CCWG
+area: "Transport"
+workgroup: "Congestion Control Working Group"
 
 kw:
   - Congestion Notification
