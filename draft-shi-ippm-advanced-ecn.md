@@ -7,13 +7,13 @@ lang: en
 
 title: Advanced Explicit Congestion Notification
 abbrev: AECN
-docname: draft-shi-ccwg-advanced-ecn-latest
+docname: draft-shi-ippm-advanced-ecn-latest
 obsoletes:
 updates:
 # date: 2022-02-02 -- date is filled in automatically by xml2rfc if not given
 
 area: "Transport"
-workgroup: "Congestion Control Working Group"
+workgroup: "IP Performance Measurement"
 
 kw:
   - Congestion Notification
@@ -31,7 +31,16 @@ author:
   ins: T. Zhou
   name: Tianran Zhou
   organization: Huawei
+  city: Beijing
+  country: China
   email: zhoutianran@huawei.com
+ -
+  ins: Z. Li
+  name: Zhenqiang Li
+  organization: China Mobile
+  city: Beijing
+  country: China
+  email: li_zhenqiang@hotmail.com
 
 informative:
   CONGA:
