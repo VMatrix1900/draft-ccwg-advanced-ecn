@@ -2,14 +2,16 @@
 
 
 
-Congestion Control Working Group                             H. Shi, Ed.
+IP Performance Measurement                                   H. Shi, Ed.
 Internet-Draft                                                   T. Zhou
 Intended status: Standards Track                                  Huawei
-Expires: 11 January 2024                                    10 July 2023
+Expires: 14 June 2024                                              Z. Li
+                                                            China Mobile
+                                                        12 December 2023
 
 
                Advanced Explicit Congestion Notification
-                   draft-shi-ccwg-advanced-ecn-latest
+                   draft-shi-ippm-advanced-ecn-latest
 
 Abstract
 
@@ -48,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 January 2024.
+   This Internet-Draft will expire on 14 June 2024.
 
 Copyright Notice
 
@@ -301,4 +303,13 @@ Authors' Addresses
 
    Tianran Zhou
    Huawei
+   Beijing
+   China
    Email: zhoutianran@huawei.com
+
+
+   Zhenqiang Li
+   China Mobile
+   Beijing
+   China
+   Email: li_zhenqiang@hotmail.com
