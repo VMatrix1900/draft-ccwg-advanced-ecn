@@ -17,10 +17,10 @@ BCP 78, 79, the TLP, and the TLP rules regarding code components (e.g. being
 subject to a Simplified BSD License) in Contributions.
 ## Working Group Information
 
-Discussion of this work occurs on the [Congestion Control Working Group
-Working Group mailing list](mailto:ccwg@ietf.org)
-([archive](https://mailarchive.ietf.org/arch/browse/ccwg/),
-[subscribe](https://www.ietf.org/mailman/listinfo/ccwg)).
+Discussion of this work occurs on the [IP Performance Measurement
+Working Group mailing list](mailto:ippm@ietf.org)
+([archive](https://mailarchive.ietf.org/arch/browse/ippm/),
+[subscribe](https://www.ietf.org/mailman/listinfo/ippm)).
 In addition to contributions in GitHub, you are encouraged to participate in
 discussions there.
 
@@ -28,4 +28,4 @@ discussions there.
 technical issues needs to occur on the mailing list.
 
 You might also like to familiarize yourself with other
-[Working Group documents](https://datatracker.ietf.org/wg/ccwg/documents/).
+[Working Group documents](https://datatracker.ietf.org/wg/ippm/documents/).
