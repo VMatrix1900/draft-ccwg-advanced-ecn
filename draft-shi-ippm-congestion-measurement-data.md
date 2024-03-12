@@ -7,7 +7,7 @@ lang: en
 
 title: Data Fields for Congestion Measurement
 abbrev: CM
-docname: draft-shi-ippm-congestion-measurement-data-00
+docname: draft-shi-ippm-congestion-measurement-data-latest
 obsoletes:
 updates:
 # date: 2022-02-02 -- date is filled in automatically by xml2rfc if not given
