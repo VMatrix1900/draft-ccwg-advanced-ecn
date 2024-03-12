@@ -17,7 +17,7 @@
 /versioned/
 Gemfile.lock
 archive.json
-draft-shi-ccwg-advanced-ecn.xml
+draft-shi-ippm-congestion-measurement-data.xml
 package-lock.json
 report.xml
 !requirements.txt
