@@ -4,33 +4,33 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>Advanced Explicit Congestion Notification</title>
+<title>Data Fields for Congestion Measurement</title>
 <meta content="Hang Shi" name="author">
 <meta content="Tianran Zhou" name="author">
 <meta content="Zhenqiang Li" name="author">
 <meta content="
-       This document proposes Advanced Explicit Congestion Notification mechanism enabling host to obtain the congestion information at the bottleneck. The sender sets the congestion information collection command in the packet header indicating the network device to update the congestion information field per hop. The receiver carries the updated congestion information back to the sender in the ACK. The sender then leverage the rich congestion information to do congestion control. 
+       Congestion Measurement collects the congestion information in the packet while the packet traverses a path. The sender sets the congestion measurement command in the packet header indicating the network device along the path to update the congestion information field in the packet. When the packet arrive at the receiver, the congestion information field will reflect the degree of congestion across network path. Congestion Measurement can enable precise congestion control, aids in effective load balancing, and simplifies network debugging. This document defines data fields for Congestion Measurement. Congestion Measurement Data-Fields can be encapsulated into a variety of protocols, such as Network Service Header (NSH), Segment Routing, Generic Network Virtualization Encapsulation (Geneve), or IPv6. 
     " name="description">
-<meta content="xml2rfc 3.18.2" name="generator">
-<meta content="Congestion Notification" name="keyword">
-<meta content="draft-shi-ippm-advanced-ecn-latest" name="ietf.draft">
+<meta content="xml2rfc 3.20.0" name="generator">
+<meta content="Congestion Measurement" name="keyword">
+<meta content="draft-shi-ippm-congestion-measurement-data-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.18.2
-    Python 3.11.6
+  xml2rfc 3.20.0
+    Python 3.11.8
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.1.0
+    platformdirs 4.2.0
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
     setuptools 68.2.2
     six 1.16.0
-    wcwidth 0.2.12
+    wcwidth 0.2.13
 -->
-<link href="draft-shi-ippm-advanced-ecn.xml" rel="alternate" type="application/rfc+xml">
+<link href="draft-shi-ippm-congestion-measurement-data.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">@font-face {
   font-family: 'Lora';
@@ -1026,12 +1026,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">AECN</td>
-<td class="right">December 2023</td>
+<td class="center">CM</td>
+<td class="right">March 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Shi, et al.</td>
-<td class="center">Expires 14 June 2024</td>
+<td class="center">Expires 13 September 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1041,15 +1041,15 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dt class="label-workgroup">Workgroup:</dt>
 <dd class="workgroup">IP Performance Measurement</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-shi-ippm-advanced-ecn-latest</dd>
+<dd class="internet-draft">draft-shi-ippm-congestion-measurement-data-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-12-12" class="published">12 December 2023</time>
+<time datetime="2024-03-12" class="published">12 March 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-06-14">14 June 2024</time></dd>
+<dd class="expires"><time datetime="2024-09-13">13 September 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1068,10 +1068,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">Advanced Explicit Congestion Notification</h1>
+<h1 id="title">Data Fields for Congestion Measurement</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document proposes Advanced Explicit Congestion Notification mechanism enabling host to obtain the congestion information at the bottleneck. The sender sets the congestion information collection command in the packet header indicating the network device to update the congestion information field per hop. The receiver carries the updated congestion information back to the sender in the ACK. The sender then leverage the rich congestion information to do congestion control.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">Congestion Measurement collects the congestion information in the packet while the packet traverses a path. The sender sets the congestion measurement command in the packet header indicating the network device along the path to update the congestion information field in the packet. When the packet arrive at the receiver, the congestion information field will reflect the degree of congestion across network path. Congestion Measurement can enable precise congestion control, aids in effective load balancing, and simplifies network debugging. This document defines data fields for Congestion Measurement. Congestion Measurement Data-Fields can be encapsulated into a variety of protocols, such as Network Service Header (NSH), Segment Routing, Generic Network Virtualization Encapsulation (Geneve), or IPv6.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1103,7 +1103,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 June 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 13 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1112,7 +1112,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2023 IETF Trust and the persons identified as the
+            Copyright (c) 2024 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1147,10 +1147,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-overview" class="internal xref">Overview</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-aecn-header-format-and-enca" class="internal xref">AECN header format and encapsulation</a></p>
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-data-fields-for-congestion-" class="internal xref">Data fields for Congestion Measurement</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-example-hpcc-with-aecn" class="internal xref">Example: HPCC with AECN</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-example-hpcc-with-congestio" class="internal xref">Example: HPCC with Congestion Measurement</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
@@ -1181,9 +1181,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">Traditionally, congestion control has depended on implicit congestion detection by the host, where hosts gauge congestion primarily through packet loss or variations in round-trip times. Explicit Congestion Notification (ECN) represents a substantial improvement, as it facilitates network devices to explicitly signal congestion to the endpoints before packet loss occurs. Low Latency, Low Loss, Scalable throughput (L4S) leverages ECN to meticulously control the queuing delay. It uses ECN markings to maintain low queuing delays and avoid bufferbloat. However, ECN is limited by the use of a single bit of information. This limitation constrains the granularity of congestion information that can be conveyed. L4S's requirement for more detailed congestion signals demands an enhanced utilization of ECN, which could involve employing additional bits for a more precise representation of congestion levels and better control over delay and throughput in contemporary network environments.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">HPCC<span>[<a href="#I-D.draft-an-ccwg-hpcc" class="cite xref">I-D.draft-an-ccwg-hpcc</a>]</span> leverages more extensive congestion signals from the network by utilizing in-band telemetry, which facilitates the gathering of detailed load information from each switch it traverses. This enhanced approach enables HPCC to make more informed decisions on controlling network congestion and converge fast. However, one caveat associated with this approach is that HPCC utilizes an append mode for in-band telemetry. In append mode, as the packet traverses the network, it accumulates data from each switch, which consequently increases the size of the packet. This growth in packet size can potentially lead to issues such as exceeding the Maximum Transmission Unit (MTU) size which makes it unsuitable for the internet. Another caveat is that each sender need to repeat the computation to get the bottleneck information even if they shares the same path.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">This document defines Advanced ECN which expands the 1 bit congestion notification to multiple bits and enables network device to update the congestion information per hop. When the packet arrives at the receiver, the congestion information field will reflect the congestion status of the path. By offloading the congestion information calculation to the network device, the computing burden of the endpoint can be reduced.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-1">To effectively manage network congestion, a detailed understanding of congestion levels across the network is imperative. Congestion control algorithms, therefore, necessitate precise congestion measurements to adapt and optimize data flow. This approach involves monitoring various metrics such as packet loss, delay variations, and throughput, which can provide a glimpse of the network's congestion state. Enhanced congestion metrics allow for a more nuanced response to congestion, enabling algorithms to adjust sending rates with greater precision, thereby improving overall network performance and efficiency.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">Furthermore, the detailed congestion measurements obtained are not solely beneficial for congestion control; they serve multifaceted purposes, including load balancing and network operations debugging. By analyzing congestion data, network operators can identify and resolve bottlenecks, optimize traffic distribution, and ensure a balanced load across the network. This data-driven approach facilitates proactive network management, allowing for timely interventions that can preempt potential disruptions and enhance network reliability and performance.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">Addressing the limitations of High Precision Congestion Control (HPCC)<span>[<a href="#I-D.draft-an-ccwg-hpcc" class="cite xref">I-D.draft-an-ccwg-hpcc</a>]</span>, which leverages in-band telemetry for detailed congestion signal collection but faces challenges with packet size increases and computational redundancy, our proposed solution introduces data fields for Congestion Measurement. Congestion Measurement expands the conventional single-bit ECN to multiple bits, allowing network devices to update congestion information at each hop more granularly. Consequently, when packets reach the receiver, the congestion information field in the packet accurately not just the presence of congestion but the degree of congestion across the link's path. This nuanced approach facilitates a richer set of data for decision-making, supporting not only more precise congestion control but also improving load balancing and network debugging efforts. By overcoming HPCC's shortcomings, our approach enhances network efficiency, reduces computational overhead at endpoints, and offers a scalable solution to managing congestion in complex network environments. Congestion Measurement Data-Fields can be encapsulated into a variety of protocols, such as Network Service Header (NSH), Segment Routing, Generic Network Virtualization Encapsulation (Geneve), or IPv6.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <div id="terminology">
 <section id="section-1.1">
         <h3 id="name-terminology">
@@ -1194,13 +1194,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-1.1-1.1.1">ECN: Explicit Congestion Notification<a href="#section-1.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-1.1-1.2">
-            <p id="section-1.1-1.2.1">AECN: Advanced Explicit Congestion Notification<a href="#section-1.1-1.2.1" class="pilcrow">¶</a></p>
+            <p id="section-1.1-1.2.1">HPCC: High Precision Congestion Control<span>[<a href="#I-D.draft-an-ccwg-hpcc" class="cite xref">I-D.draft-an-ccwg-hpcc</a>]</span><a href="#section-1.1-1.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-1.1-1.3">
-            <p id="section-1.1-1.3.1">HPCC: High Precision Congestion Control<span>[<a href="#I-D.draft-an-ccwg-hpcc" class="cite xref">I-D.draft-an-ccwg-hpcc</a>]</span><a href="#section-1.1-1.3.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="section-1.1-1.4">
-            <p id="section-1.1-1.4.1">DRE: Discounting Rate Estimator<span>[<a href="#CONGA" class="cite xref">CONGA</a>]</span><a href="#section-1.1-1.4.1" class="pilcrow">¶</a></p>
+            <p id="section-1.1-1.3.1">DRE: Discounting Rate Estimator<span>[<a href="#CONGA" class="cite xref">CONGA</a>]</span><a href="#section-1.1-1.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1223,42 +1220,43 @@ appear in all capitals, as shown here.<a href="#section-1.2-1" class="pilcrow">�
       <h2 id="name-overview">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
       </h2>
-<p id="section-2-1"><a href="#AECN-procedure" class="auto internal xref">Figure 1</a> shows the overview procedure of AECN. First the sender <span class="bcp14">MUST</span> marks the packet with AECN command and initial Congestion Info(called AECN header, see <a href="#format" class="auto internal xref">Section 3</a>). The AECN Command specified what kind of the congestion information that the endpoint intend to collect from network devices. As the packet traverses through the network, each router <span class="bcp14">MUST</span> update the Congestion Info field based on the AECN command and the router's local load condition. Upon reaching the receiver, the updated congestion information within the packet is extracted and then communicated back to the sender, typically using the transport protocol's acknowledgment mechanism. The sender, now equipped with the congestion information reflective of the packet's journey, uses this data to make informed adjustments to its sending rate.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<span id="name-overview-of-advanced-ecn"></span><div id="AECN-procedure">
+<p id="section-2-1"><a href="#CM-procedure" class="auto internal xref">Figure 1</a> shows the overview procedure of Congestion Measurement. First the sender <span class="bcp14">MUST</span> marks the packet with data fields for Congestion Measurement (see <a href="#format" class="auto internal xref">Section 3</a>) which specifies what kind of the congestion information that the sending node intends to collect from transit nodes. As the packet traverses through the network, each router should inspect the data fields and update the Congestion Info field accordingly. Upon reaching the receiver, the updated congestion info data within the packet is extracted and then send back to the sender. The sender, now equipped with the congestion information reflective of the packet's journey, uses this data to make informed adjustments to its sending rate or load balancing decisions.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<span id="name-overview-of-congestion-meas"></span><div id="CM-procedure">
 <figure id="figure-1">
         <div class="alignLeft art-text artwork" id="section-2-2.1">
 <pre>
-              pkt+                     pkt+                     pkt+
-         AECN Command+            AECN Command+            AECN Command+
-+------+Congestion Info0+-------+Congestion Info1+-------+Congestion Info2+--------+
-|Sender|===============&gt;|Router1|===============&gt;|Router2|===============&gt;|Receiver|
-+------+     Link-1     +-------+     Link-2     +-------+     Link-3     +--------+
-  /|\                                                                         |
-   |                                                                          |
-   +--------------------------------------------------------------------------+
-                                        ACKs
+   Mark              Update            Update             Export
+Congestion         Congestion        Congestion         Congestion
+Measurement          Info               Info               Info
+    |                 |                  |                  |
+    |                 |                  |                  |
+    |                 |                  |                  |
++-------+         +-------+          +-------+         +---------+
+|Sending|========&gt;|Transit|=========&gt;|Transit|======= &gt;|Receiving|
+|  Node |         | Node1 |          | Node2 |         |  Node   |
++-------+  Link-1 +-------+  Link-2  +-------+ Link-3  +---------+
 </pre>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
-<a href="#name-overview-of-advanced-ecn" class="selfRef">Overview of Advanced ECN</a>
+<a href="#name-overview-of-congestion-meas" class="selfRef">Overview of Congestion Measurement</a>
         </figcaption></figure>
 </div>
 </section>
 </div>
 <div id="format">
 <section id="section-3">
-      <h2 id="name-aecn-header-format-and-enca">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-aecn-header-format-and-enca" class="section-name selfRef">AECN header format and encapsulation</a>
+      <h2 id="name-data-fields-for-congestion-">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-data-fields-for-congestion-" class="section-name selfRef">Data fields for Congestion Measurement</a>
       </h2>
-<p id="section-3-1"><a href="#AECN-header" class="auto internal xref">Figure 2</a> shown the format of AECN. The AECN header <span class="bcp14">SHOULD</span> be encapsulated in IPv6 extension header<span>[<a href="#RFC8200" class="cite xref">RFC8200</a>]</span> such as SRH, Hop by Hop Options Header etc.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<span id="name-aecn-header-format"></span><div id="AECN-header">
+<p id="section-3-1"><a href="#CM-header" class="auto internal xref">Figure 2</a> shown the format of data fields for Congestion Measurement.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<span id="name-data-fields-for-congestion-m"></span><div id="CM-header">
 <figure id="figure-2">
         <div class="alignLeft art-text artwork" id="section-3-2.1">
 <pre>
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|     Flags     |           Congestion Info Type                |
+|U| Reserved  |C|           Congestion Info Type                |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |                     Congestion Info Data                      |
 ~                            ....                               ~
@@ -1266,13 +1264,29 @@ appear in all capitals, as shown here.<a href="#section-1.2-1" class="pilcrow">�
 </pre>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
-<a href="#name-aecn-header-format" class="selfRef">AECN header format</a>
+<a href="#name-data-fields-for-congestion-m" class="selfRef">Data Fields for Congestion Measurement</a>
         </figcaption></figure>
 </div>
 <p id="section-3-3">where:<a href="#section-3-3" class="pilcrow">¶</a></p>
-<p id="section-3-4">Flags: An 8-bit field. The Bit 7 of Flags indicates the Congestion Info is customized and used only in limited domain such as Data center network. If the Bit 7 is 0, the Congestion Info Type is a bitmap. Other bits are reserved.<a href="#section-3-4" class="pilcrow">¶</a></p>
-<p id="section-3-5">Congestion Info Type: A 24-bit map that specifies the present Congestion Info Data. Supported Congestion Info Data is listed in <a href="#congestion-info" class="auto internal xref">Table 1</a>. Note that it is possible for multiple Congestion Info Data to coexist in one packet.<a href="#section-3-5" class="pilcrow">¶</a></p>
-<p id="section-3-6">Congestion Info Data: A variable length field including the congestion information data. Router <span class="bcp14">MUST</span> update this field based on local load status.<a href="#section-3-6" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3-4.1">
+          <p id="section-3-4.1.1">Flags: An 8-bit field.<a href="#section-3-4.1.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3-4.1.2.1">
+              <p id="section-3-4.1.2.1.1">The first bit(U) indicates whether the Congestion Info Data field needs to be updated by transit nodes. If set, the transit nodes will update the Congestion Info Data. If not, the transit node will not update it.<a href="#section-3-4.1.2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-3-4.1.2.2">
+              <p id="section-3-4.1.2.2.1">The last bit(C) indicates the Congestion Info Data is customized and used only in limited domain such as Data center network. If the C is 0, the Congestion Info Type is a bitmap. Other bits are reserved.<a href="#section-3-4.1.2.2.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+</li>
+        <li class="normal" id="section-3-4.2">
+          <p id="section-3-4.2.1">Congestion Info Type: A 24-bit map that specifies the present Congestion Info Data. Supported Congestion Info Data is listed in <a href="#congestion-info" class="auto internal xref">Table 1</a>. Note that it is possible for multiple Congestion Info Data to coexist in one packet for the endpoint to collect the detailed raw congestion information.<a href="#section-3-4.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-3-4.3">
+          <p id="section-3-4.3.1">Congestion Info Data: A variable length field including the congestion information data. Router <span class="bcp14">MUST</span> update this field based on local load status. The length and the update operation is listed in <a href="#congestion-info" class="auto internal xref">Table 1</a>.<a href="#section-3-4.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
 <span id="name-congestion-info-data"></span><div id="congestion-info">
 <table class="center" id="table-1">
         <caption>
@@ -1323,10 +1337,10 @@ appear in all capitals, as shown here.<a href="#section-1.2-1" class="pilcrow">�
 </div>
 </section>
 </div>
-<div id="example-hpcc-with-aecn">
+<div id="example-hpcc-with-congestion-measurement">
 <section id="section-4">
-      <h2 id="name-example-hpcc-with-aecn">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-example-hpcc-with-aecn" class="section-name selfRef">Example: HPCC with AECN</a>
+      <h2 id="name-example-hpcc-with-congestio">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-example-hpcc-with-congestio" class="section-name selfRef">Example: HPCC with Congestion Measurement</a>
       </h2>
 <p id="section-4-1">HPCC calculates the inflight ratio of each link(represent the link utilization of the link) from the collected raw load information carried in the INT. Then maximum inflight ratio along the path is identified and used to adjust the sending rate. The formula to calculate the inflight ratio of each link is shown below:<a href="#section-4-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-4-2">
@@ -1335,12 +1349,22 @@ txRate = (txBytes_1 - txBytes_2)/(t_1-t_2)
 inflight ratio = qlen/(B*T) + txRate/B
 </pre><a href="#section-4-2" class="pilcrow">¶</a>
 </div>
-<p id="section-4-3">where:
-txBytes: link total transmitted bytes associated with timestamp ts<a href="#section-4-3" class="pilcrow">¶</a></p>
-<p id="section-4-4">qlen: link queue length<a href="#section-4-4" class="pilcrow">¶</a></p>
-<p id="section-4-5">B: link bandwidth<a href="#section-4-5" class="pilcrow">¶</a></p>
-<p id="section-4-6">T: Baseline RTT<a href="#section-4-6" class="pilcrow">¶</a></p>
-<p id="section-4-7">Leveraging AECN, the router participates in calculation of the maximum inflight ratio. Each router <span class="bcp14">MUST</span> calculate the inflight ratio of the down link and then compare it to the one in the AECN header and keep the larger one. When the packet arrives at the endpoint, the Congestion Info field of the AECN header already contains the maximum inflight ratio. The sending rate adjustment algorithm remains unchanged. By allowing routers to conduct these calculations, the computing overhead is reduced for the endpoint. Since the update of value is in-place, the packet size remains unchanged regardless of the hops count.<a href="#section-4-7" class="pilcrow">¶</a></p>
+<p id="section-4-3">where:<a href="#section-4-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4-4.1">
+          <p id="section-4-4.1.1">txBytes: link total transmitted bytes associated with timestamp ts<a href="#section-4-4.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-4.2">
+          <p id="section-4-4.2.1">qlen: link queue length<a href="#section-4-4.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-4.3">
+          <p id="section-4-4.3.1">B: link bandwidth<a href="#section-4-4.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-4.4">
+          <p id="section-4-4.4.1">T: Baseline RTT<a href="#section-4-4.4.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-4-5">Leveraging Congestion Measurement, the router participates in calculation of the maximum inflight ratio. Each router <span class="bcp14">MUST</span> calculate the inflight ratio of the down link and then compare it to the one in the Congestion Info Data field and keep the larger one. When the packet arrives at the endpoint, the Congestion Info Data field already contains the maximum inflight ratio. The sending rate adjustment algorithm remains unchanged. By allowing routers to conduct these calculations, the computing overhead is reduced for the endpoint. Since the update of value is in-place, the packet size remains unchanged regardless of the hops count.<a href="#section-4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
@@ -1374,12 +1398,8 @@ txBytes: link total transmitted bytes associated with timestamp ts<a href="#sect
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
-        <dd>
-<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC8200">[RFC8200]</dt>
       <dd>
-<span class="refAuthor">Deering, S.</span> and <span class="refAuthor">R. Hinden</span>, <span class="refTitle">"Internet Protocol, Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 86</span>, <span class="seriesInfo">RFC 8200</span>, <span class="seriesInfo">DOI 10.17487/RFC8200</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8200">https://www.rfc-editor.org/rfc/rfc8200</a>&gt;</span>. </dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
