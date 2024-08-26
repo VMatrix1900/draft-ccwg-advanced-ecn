@@ -10,9 +10,8 @@ abbrev: CM
 docname: draft-shi-ippm-congestion-measurement-data-latest
 obsoletes:
 updates:
-# date: 2022-02-02 -- date is filled in automatically by xml2rfc if not given
 
-area: "Transport"
+area: "Operations and Management"
 workgroup: "IP Performance Measurement"
 
 kw:
