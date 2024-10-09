@@ -97,7 +97,7 @@ informative:
 
 --- abstract
 
-Congestion Measurement collects the congestion information in the packet while the packet traverses a path. The sender sets the congestion measurement command in the packet header indicating the network device along the path to update the congestion information field in the packet. When the packet arrive at the receiver, the congestion information field will reflect the degree of congestion across network path. Congestion Measurement can enable precise congestion control, aids in effective load balancing, and simplifies network debugging. This document defines data fields for Congestion Measurement. Congestion Measurement Data-Fields can be encapsulated into a variety of protocols, such as Network Service Header (NSH), Segment Routing, Generic Network Virtualization Encapsulation (Geneve), or IPv6.
+Congestion Measurement collects the congestion information in the packet while the packet traverses a path. The sender sets the congestion measurement command in the packet header indicating the network device along the path to update the congestion information field in the packet. When the packet arrives at the receiver, the congestion information field will reflect the degree of congestion across network path. Congestion Measurement can enable precise congestion control, aids in effective load balancing, and simplifies network debugging. This document defines data fields for Congestion Measurement. Congestion Measurement Data-Fields can be encapsulated into a variety of protocols, such as Network Service Header (NSH), Segment Routing, Generic Network Virtualization Encapsulation (Geneve), or IPv6.
 
 --- middle
 
