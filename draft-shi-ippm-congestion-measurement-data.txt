@@ -5,9 +5,9 @@
 IP Performance Measurement                                   H. Shi, Ed.
 Internet-Draft                                                   T. Zhou
 Intended status: Standards Track                                  Huawei
-Expires: 27 February 2025                                          Z. Li
+Expires: 12 April 2025                                             Z. Li
                                                             China Mobile
-                                                          26 August 2024
+                                                          9 October 2024
 
 
                  Data Fields for Congestion Measurement
@@ -19,7 +19,7 @@ Abstract
    packet while the packet traverses a path.  The sender sets the
    congestion measurement command in the packet header indicating the
    network device along the path to update the congestion information
-   field in the packet.  When the packet arrive at the receiver, the
+   field in the packet.  When the packet arrives at the receiver, the
    congestion information field will reflect the degree of congestion
    across network path.  Congestion Measurement can enable precise
    congestion control, aids in effective load balancing, and simplifies
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 February 2025.
+   This Internet-Draft will expire on 12 April 2025.
 
 Copyright Notice
 
