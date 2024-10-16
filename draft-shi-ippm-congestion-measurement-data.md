@@ -205,7 +205,7 @@ The method for obtaining the ABW of a link is shown as follows:
 2. Transit Node identify the ABW probe action based on the Congestion Measurement header, compare the ABW of their egress port with the ABW in the packet. If the ABW of the current node is smaller than that in the packet, it updates to the link's ABW and forwards the packet; otherwise, it directly forwards the packet.
 3. After receiving the ABW packet, the receiving node parses the link's ABW, constructs an ABW response packet, and sends it back to the sending node.
 
-The calculation of the current node's ABW can be referenced as follows: 
+The calculation of the current node's ABW can be referenced as follows:
 ~~~
 ABW = B - T - R
 ~~~
