@@ -34,6 +34,12 @@ author:
   country: China
   email: zhoutianran@huawei.com
  -
+  ins: G. Zhao
+  name: Guangyu Zhao
+  organization: China Mobile
+  country: China
+  email: zhaoguangyu@chinamobile.com
+ -
   ins: Z. Li
   name: Zhenqiang Li
   organization: China Mobile
@@ -168,9 +174,10 @@ where:
 | 2 | Queue Utilization Ratio | 8 | Max |
 | 3 | Queue Delay | 8 | Add |
 | 4 | Congested Hops | 8 |Add |
+| 5 | Available Bandwidth | 8 | Min
 {: #congestion-info title="Congestion Info Data"}
 
-# Example: HPCC with Congestion Measurement
+# Example 1: HPCC with Congestion Measurement
 
 HPCC calculates the inflight ratio of each link(represent the link utilization of the link) from the collected raw load information carried in the INT. Then maximum inflight ratio along the path is identified and used to adjust the sending rate. The formula to calculate the inflight ratio of each link is shown below:
 
@@ -187,6 +194,23 @@ where:
 - T: Baseline RTT
 
 Leveraging Congestion Measurement, the router participates in calculation of the maximum inflight ratio. Each router MUST calculate the inflight ratio of the down link and then compare it to the one in the Congestion Info Data field and keep the larger one. When the packet arrives at the endpoint, the Congestion Info Data field already contains the maximum inflight ratio. The sending rate adjustment algorithm remains unchanged. By allowing routers to conduct these calculations, the computing overhead is reduced for the endpoint. Since the update of value is in-place, the packet size remains unchanged regardless of the hops count.
+
+# Example 2: Available bandwidth
+
+The ABW(available bandwidth) of links can be applied in existing CC algorithms to optimize their throughput performance, such as TCP Reno and CUBIC. The sending rate and congestion window can be dynamically adjusted during the CC's slow-start and loss recovery phases. The BBR algorithm, which detects link bottleneck bandwidth based on rate and round-trip time (RTT), can utilize the ABW to obtain the bottleneck bandwidth of the link and optimize data throughput efficiency. Alternatively, a completely new CC algorithm can be designed based on ABW to predict and avoid congestion in advance.
+
+The method for obtaining the ABW of a link is shown as follows:
+
+1. The sending node can obtain the ABW of its egress port, mark the packet with data fields for ABW Measurement, and then send the packet to the Receiving node.
+2. Transit Node identify the ABW probe action based on the Congestion Measurement header, compare the ABW of their egress port with the ABW in the packet. If the ABW of the current node is smaller than that in the packet, it updates to the link's ABW and forwards the packet; otherwise, it directly forwards the packet.
+3. After receiving the ABW packet, the receiving node parses the link's ABW, constructs an ABW response packet, and sends it back to the sending node.
+
+The calculation of the current node's ABW can be referenced as follows: 
+~~~
+ABW = B - T - R
+~~~
+
+where B is the bandwidth of the egress port where the flow passes, T is the traffic size of that egress port, and R is the reserved bandwidth. The reserved bandwidth takes into account the fairness of the CC algorithm, facilitating the entry of newly added flow. The value of R can be set according to the specific circumstances of each node, allowing TOR switches and backbone routers to reserve different percentages of bandwidth.
 
 # Security Considerations
 
