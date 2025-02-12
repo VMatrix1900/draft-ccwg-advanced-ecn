@@ -4,8 +4,8 @@
 
 WG Working Group                                              Y. N. Here
 Internet-Draft                                    Your Organization Here
-Intended status: Informational                          11 February 2025
-Expires: 15 August 2025
+Intended status: Informational                          12 February 2025
+Expires: 16 August 2025
 
 
                            TODO - Your title
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 August 2025.
+   This Internet-Draft will expire on 16 August 2025.
 
 Copyright Notice
 
