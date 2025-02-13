@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-30T01:44:14.775346+00:00",
+  "timestamp": "2025-02-13T01:48:36.520954+00:00",
   "repo": "VMatrix1900/draft-ccwg-advanced-ecn",
   "labels": [
     {
@@ -47,8 +47,100 @@
       "name": "wontfix",
       "description": "This will not be worked on",
       "color": "ffffff"
+    },
+    {
+      "name": "template_sync",
+      "description": "",
+      "color": "C2E0C6"
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOJ5xDNM6KxHFG",
+      "title": "upstream merge template repository",
+      "url": "https://github.com/VMatrix1900/draft-ccwg-advanced-ecn/pull/1",
+      "state": "CLOSED",
+      "author": "VMatrix1900",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "template_sync"
+      ],
+      "body": "Merge https://github.com/martinthomson/internet-draft-template ea87c4f",
+      "createdAt": "2025-02-11T08:56:23Z",
+      "updatedAt": "2025-02-12T02:06:04Z",
+      "baseRepository": "VMatrix1900/draft-ccwg-advanced-ecn",
+      "baseRefName": "main",
+      "baseRefOid": "bb0397e7df9f1f9f168d0e393b39fa15d66ad27d",
+      "headRepository": "VMatrix1900/draft-ccwg-advanced-ecn",
+      "headRefName": "chore/template_sync_ea87c4f",
+      "headRefOid": "a1e52cb3db82ff58951aff2e82177d6f26224363",
+      "closedAt": "2025-02-12T01:19:08Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOJ5xDNM6K478C",
+      "title": "upstream merge template repository",
+      "url": "https://github.com/VMatrix1900/draft-ccwg-advanced-ecn/pull/2",
+      "state": "CLOSED",
+      "author": "VMatrix1900",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "template_sync"
+      ],
+      "body": "Merge https://github.com/martinthomson/internet-draft-template ea87c4f",
+      "createdAt": "2025-02-12T02:07:07Z",
+      "updatedAt": "2025-02-12T02:17:39Z",
+      "baseRepository": "VMatrix1900/draft-ccwg-advanced-ecn",
+      "baseRefName": "main",
+      "baseRefOid": "b291e249e5083697d7a334849ae8ff7b0b8ca185",
+      "headRepository": "VMatrix1900/draft-ccwg-advanced-ecn",
+      "headRefName": "chore/template_sync_ea87c4f",
+      "headRefOid": "4663abf76e23829c7ac4dd1abb78119ccf0c9c14",
+      "closedAt": "2025-02-12T02:17:33Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOJ5xDNM6K4-UD",
+      "title": "upstream merge template repository",
+      "url": "https://github.com/VMatrix1900/draft-ccwg-advanced-ecn/pull/3",
+      "state": "MERGED",
+      "author": "VMatrix1900",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "template_sync"
+      ],
+      "body": "Merge https://github.com/martinthomson/internet-draft-template ea87c4f",
+      "createdAt": "2025-02-12T02:18:15Z",
+      "updatedAt": "2025-02-12T02:21:09Z",
+      "baseRepository": "VMatrix1900/draft-ccwg-advanced-ecn",
+      "baseRefName": "main",
+      "baseRefOid": "831d3761f504cec38f6a61826f3354c99c4bb249",
+      "headRepository": "VMatrix1900/draft-ccwg-advanced-ecn",
+      "headRefName": "chore/template_sync_ea87c4f",
+      "headRefOid": "222302f7a666b0161833c00fec5e825113ca1db1",
+      "closedAt": "2025-02-12T02:21:09Z",
+      "mergedAt": "2025-02-12T02:21:09Z",
+      "mergedBy": "VMatrix1900",
+      "mergeCommit": {
+        "oid": "f041543cb8773cf0e845bb21fd2374c85cf76e26"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
