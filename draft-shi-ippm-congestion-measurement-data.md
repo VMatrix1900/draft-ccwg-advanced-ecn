@@ -151,7 +151,7 @@ Measurement          Info               Info               Info
 The Flags field is shown below:
 
 ~~~
- 0 1 2 3 4 5 6 7 
+ 0 1 2 3 4 5 6 7
 +-+-+-+-+-+-+-+-+
 |U| Reserved  |C|
 +-+-+-+-+-+-+-+-+
@@ -255,7 +255,7 @@ The value of R can be set according to the specific circumstances of each node, 
 An attack on Congestion Measurement can prevent the collection of the congestion information by maliciously modifying the data fields in transit
 or by injecting packets with maliciously generated data fields.
 As mentioned above, a possibility to overcome this issue can be to apply the Congestion Measurement in specific controlled domains,
-thus confining the potential attack vectors within the network domain. 
+thus confining the potential attack vectors within the network domain.
 A limited administrative domain provides the network administrator with the means to select, monitor, and control the access to the network, making it a trusted domain.
 
 # IANA Considerations
