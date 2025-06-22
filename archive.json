@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-19T02:09:35.108492+00:00",
+  "timestamp": "2025-06-22T02:24:37.985870+00:00",
   "repo": "VMatrix1900/draft-ccwg-advanced-ecn",
   "labels": [
     {
@@ -233,6 +233,34 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOJ5xDNM6bRW3X",
+      "title": "Update draft-shi-ippm-congestion-measurement-data.md",
+      "url": "https://github.com/VMatrix1900/draft-ccwg-advanced-ecn/pull/7",
+      "state": "MERGED",
+      "author": "giuseppefioccola",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-06-19T14:29:10Z",
+      "updatedAt": "2025-06-20T07:52:44Z",
+      "baseRepository": "VMatrix1900/draft-ccwg-advanced-ecn",
+      "baseRefName": "main",
+      "baseRefOid": "8e017f1f754633a861b02360fc029c2336d87ee4",
+      "headRepository": "giuseppefioccola/draft-ccwg-advanced-ecn",
+      "headRefName": "patch-1",
+      "headRefOid": "3fe2048e0ac4f3a993004e089353b5d612b5e776",
+      "closedAt": "2025-06-20T07:52:44Z",
+      "mergedAt": "2025-06-20T07:52:44Z",
+      "mergedBy": "giuseppefioccola",
+      "mergeCommit": {
+        "oid": "4088aa25f2bfb5cf3e086c536d769ecbbccd7a16"
+      },
       "comments": [],
       "reviews": []
     }
