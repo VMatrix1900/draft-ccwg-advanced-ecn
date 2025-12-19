@@ -55,6 +55,8 @@ contributor:
   city: Beijing
   country: China
 
+normative:
+
 informative:
   CONGA: DOI.10.1145/2619239.2626316
 
@@ -85,14 +87,14 @@ By analyzing congestion data, network operators can identify and resolve bottlen
 and ensure a balanced load across the network. This data-driven approach facilitates proactive network management,
 allowing for timely interventions that can preempt potential disruptions and enhance network reliability and performance.
 
-High Precision Congestion Control (HPCC){{?I-D.draft-miao-ccwg-hpcc}}, leverages INT (Inband Network Telemetry)
+High Precision Congestion Control (HPCC) {{?I-D.miao-ccwg-hpcc}}, leverages INT (In-band Network Telemetry)
 for detailed congestion signal collection but faces challenges with packet size increases and computational redundancy.
 This document proposed a different approach and introduces data fields for Congestion Measurement.
 Congestion Measurement expands the conventional single-bit ECN to multiple bits, allowing network devices
 to update congestion information at each hop more granularly. Consequently, when packets reach the receiver,
 the congestion information field in the packet indicates not only the presence of congestion but the degree of congestion across the link's path.
 This approach facilitates a richer set of data for decision-making, supporting not only more precise congestion control
-but also improving load balancing and network debugging efforts. By overcoming HPCC's shortcomings, our approach enhances network efficiency,
+but also improving load balancing and network debugging efforts. By overcoming HPCC's shortcomings, this approach enhances network efficiency,
 reduces computational overhead at endpoints, and offers a scalable solution to managing congestion in complex network environments.
 Congestion Measurement Data-Fields can be encapsulated into a variety of protocols, such as IPv6,
 Segment Routing Header (SRH), Network Service Header (NSH), Generic Network Virtualization Encapsulation (Geneve), etc.
@@ -100,9 +102,9 @@ Segment Routing Header (SRH), Network Service Header (NSH), Generic Network Virt
 ## Terminology
 
 - CC: Congestion Control
-- DRE: Discounting Rate Estimator{{CONGA}}
+- DRE: Discounting Rate Estimator {{CONGA}}
 - ECN: Explicit Congestion Notification
-- HPCC: High Precision Congestion Control{{?I-D.draft-miao-ccwg-hpcc}}
+- HPCC: High Precision Congestion Control {{?I-D.miao-ccwg-hpcc}}
 
 ## Requirements Language
 
@@ -111,7 +113,7 @@ Segment Routing Header (SRH), Network Service Header (NSH), Generic Network Virt
 # Overview
 
 {{CM-procedure}} shows the overview procedure of Congestion Measurement.
-First the sender MUST sets the packet with data fields for Congestion Measurement (see {{format}})
+First, the sender MUST sets the packet with data fields for Congestion Measurement (see {{format}})
 which specifies what kind of the congestion information that the sending node intends to collect from transit nodes.
 As the packet traverses through the network, each router should inspect the data fields and update the Congestion Info Data field accordingly.
 Upon reaching the receiver, the updated congestion info data within the packet is extracted and then send back to the sender.
@@ -160,9 +162,9 @@ The Flags field is shown below:
 where:
 
 - Flags: An 8-bit field.
-  - The first bit(U) indicates whether the Congestion Info Data field needs to be updated by transit nodes.
+  - The first bit (U) indicates whether the Congestion Info Data field needs to be updated by transit nodes.
   If set, the transit nodes will update the Congestion Info Data. If not, the transit node will not update it.
-  - The last bit(C) indicates that the Congestion Info Data is customized and used only in limited domain such as Data Center network.
+  - The last bit (C) indicates that the Congestion Info Data is customized and used only in limited domain such as Data Center network.
   If the C is 0, the Congestion Info Type is a bitmap. Other bits are reserved.
 - Congestion Info Type: A 24-bit map that specifies the present Congestion Info Data. Supported Congestion Info Data is listed in {{congestion-info}}.
 Note that it is possible for multiple Congestion Info Data to coexist in one packet for the endpoint to collect the detailed raw congestion information.
@@ -185,7 +187,7 @@ The order of packing the data fields in the Congestion Info Data follows the bit
 
 The Congestion Info Data fields are:
 
-- Inflight Ratio is described in {{?I-D.draft-miao-ccwg-hpcc}} and further explained in {{hpcc}}.
+- Inflight Ratio is described in {{?I-D.miao-ccwg-hpcc}} and further explained in {{hpcc}}.
 - DRE is defined in {{CONGA}}. It is a simple module for measuring the load of a link.
 The DRE maintains a register, which is incremented for each packet sent over the link by the packet size in bytes,
 and is decremented periodically with a multiplicative factor between 0 and 1. Therefore, the register is proportional to the rate of traffic over the link.
@@ -197,7 +199,7 @@ The congestion metric for the link is obtained by comparing it with the link spe
 
 # HPCC with Inflight Ratio {#hpcc}
 
-As described in {{?I-D.draft-miao-ccwg-hpcc}}, HPCC calculates the inflight ratio of each link(represent the link utilization of the link)
+As described in {{?I-D.miao-ccwg-hpcc}}, HPCC calculates the inflight ratio of each link(represent the link utilization of the link)
 from the collected raw load information carried in the p4.org INT.
 Then maximum inflight ratio along the path is identified and used to adjust the sending rate.
 The formula to calculate the inflight ratio of each link is shown below:
