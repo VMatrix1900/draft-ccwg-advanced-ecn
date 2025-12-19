@@ -5,10 +5,10 @@
 IP Performance Measurement                                   G. Fioccola
 Internet-Draft                                                   T. Zhou
 Intended status: Standards Track                                  Huawei
-Expires: 22 December 2025                                        G. Zhao
+Expires: 22 June 2026                                            G. Zhao
                                                                    Z. Li
                                                             China Mobile
-                                                            20 June 2025
+                                                        19 December 2025
 
 
                  Data Fields for Congestion Measurement
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 December 2025.
+   This Internet-Draft will expire on 22 June 2026.
 
 Copyright Notice
 
@@ -112,8 +112,8 @@ Table of Contents
    interventions that can preempt potential disruptions and enhance
    network reliability and performance.
 
-   High Precision Congestion Control (HPCC)[I-D.draft-miao-ccwg-hpcc],
-   leverages INT (Inband Network Telemetry) for detailed congestion
+   High Precision Congestion Control (HPCC) [I-D.miao-ccwg-hpcc],
+   leverages INT (In-band Network Telemetry) for detailed congestion
    signal collection but faces challenges with packet size increases and
    computational redundancy.  This document proposed a different
    approach and introduces data fields for Congestion Measurement.
@@ -125,7 +125,7 @@ Table of Contents
    congestion across the link's path.  This approach facilitates a
    richer set of data for decision-making, supporting not only more
    precise congestion control but also improving load balancing and
-   network debugging efforts.  By overcoming HPCC's shortcomings, our
+   network debugging efforts.  By overcoming HPCC's shortcomings, this
    approach enhances network efficiency, reduces computational overhead
    at endpoints, and offers a scalable solution to managing congestion
    in complex network environments.  Congestion Measurement Data-Fields
@@ -137,11 +137,11 @@ Table of Contents
 
    *  CC: Congestion Control
 
-   *  DRE: Discounting Rate Estimator[CONGA]
+   *  DRE: Discounting Rate Estimator [CONGA]
 
    *  ECN: Explicit Congestion Notification
 
-   *  HPCC: High Precision Congestion Control[I-D.draft-miao-ccwg-hpcc]
+   *  HPCC: High Precision Congestion Control [I-D.miao-ccwg-hpcc]
 
 1.2.  Requirements Language
 
@@ -154,12 +154,12 @@ Table of Contents
 2.  Overview
 
    Figure 1 shows the overview procedure of Congestion Measurement.
-   First the sender MUST sets the packet with data fields for Congestion
-   Measurement (see Section 3) which specifies what kind of the
-   congestion information that the sending node intends to collect from
-   transit nodes.  As the packet traverses through the network, each
-   router should inspect the data fields and update the Congestion Info
-   Data field accordingly.  Upon reaching the receiver, the updated
+   First, the sender MUST sets the packet with data fields for
+   Congestion Measurement (see Section 3) which specifies what kind of
+   the congestion information that the sending node intends to collect
+   from transit nodes.  As the packet traverses through the network,
+   each router should inspect the data fields and update the Congestion
+   Info Data field accordingly.  Upon reaching the receiver, the updated
    congestion info data within the packet is extracted and then send
    back to the sender.  The sender, now equipped with the congestion
    information reflective of the packet's journey, uses this data to
@@ -205,12 +205,12 @@ Table of Contents
 
    *  Flags: An 8-bit field.
 
-      -  The first bit(U) indicates whether the Congestion Info Data
+      -  The first bit (U) indicates whether the Congestion Info Data
          field needs to be updated by transit nodes.  If set, the
          transit nodes will update the Congestion Info Data.  If not,
          the transit node will not update it.
 
-      -  The last bit(C) indicates that the Congestion Info Data is
+      -  The last bit (C) indicates that the Congestion Info Data is
          customized and used only in limited domain such as Data Center
          network.  If the C is 0, the Congestion Info Type is a bitmap.
          Other bits are reserved.
@@ -252,8 +252,8 @@ Table of Contents
 
    The Congestion Info Data fields are:
 
-   *  Inflight Ratio is described in [I-D.draft-miao-ccwg-hpcc] and
-      further explained in Section 4.
+   *  Inflight Ratio is described in [I-D.miao-ccwg-hpcc] and further
+      explained in Section 4.
 
    *  DRE is defined in [CONGA].  It is a simple module for measuring
       the load of a link.  The DRE maintains a register, which is
@@ -275,12 +275,12 @@ Table of Contents
 
 4.  HPCC with Inflight Ratio
 
-   As described in [I-D.draft-miao-ccwg-hpcc], HPCC calculates the
-   inflight ratio of each link(represent the link utilization of the
-   link) from the collected raw load information carried in the p4.org
-   INT.  Then maximum inflight ratio along the path is identified and
-   used to adjust the sending rate.  The formula to calculate the
-   inflight ratio of each link is shown below:
+   As described in [I-D.miao-ccwg-hpcc], HPCC calculates the inflight
+   ratio of each link(represent the link utilization of the link) from
+   the collected raw load information carried in the p4.org INT.  Then
+   maximum inflight ratio along the path is identified and used to
+   adjust the sending rate.  The formula to calculate the inflight ratio
+   of each link is shown below:
 
    txRate = (txBytes_1 - txBytes_2)/(t_1-t_2)
    inflight ratio = qlen/(B*T) + txRate/B
@@ -396,7 +396,7 @@ Table of Contents
               503-514, DOI 10.1145/2619239.2626316, August 2014,
               <https://doi.org/10.1145/2619239.2626316>.
 
-   [I-D.draft-miao-ccwg-hpcc]
+   [I-D.miao-ccwg-hpcc]
               Miao, R., Anubolu, S., Pan, R., Lee, J., Gafni, B.,
               Tantsura, J., Alemania, A., and Y. Shpigelman, "HPCC++:
               Enhanced High Precision Congestion Control", Work in

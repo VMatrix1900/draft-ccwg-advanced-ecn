@@ -19,23 +19,22 @@ and simplify network debugging. This document defines data fields for Congestion
 Congestion Measurement Data-Fields can be encapsulated into a variety of protocols, such as IPv6,
 Segment Routing Header (SRH), Network Service Header (NSH), Generic Network Virtualization Encapsulation (Geneve), etc. 
     " name="description">
-<meta content="xml2rfc 3.29.0" name="generator">
+<meta content="xml2rfc 3.31.0" name="generator">
 <meta content="Congestion Measurement" name="keyword">
 <meta content="draft-shi-ippm-congestion-measurement-data-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.29.0
-    Python 3.12.11
+  xml2rfc 3.31.0
+    Python 3.12.12
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.6
-    lxml 5.3.1
-    platformdirs 4.3.8
+    lxml 6.0.2
+    platformdirs 4.5.1
     pycountry 24.6.1
-    PyYAML 6.0.2
-    requests 2.32.4
-    setuptools 80.9.0
-    wcwidth 0.2.13
+    PyYAML 6.0.3
+    requests 2.32.5
+    wcwidth 0.2.14
 -->
 <link href="draft-shi-ippm-congestion-measurement-data.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1054,11 +1053,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">CM</td>
-<td class="right">June 2025</td>
+<td class="right">December 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Fioccola, et al.</td>
-<td class="center">Expires 22 December 2025</td>
+<td class="center">Expires 22 June 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1071,12 +1070,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-shi-ippm-congestion-measurement-data-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-06-20" class="published">20 June 2025</time>
+<time datetime="2025-12-19" class="published">19 December 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-12-22">22 December 2025</time></dd>
+<dd class="expires"><time datetime="2026-06-22">22 June 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1140,7 +1139,7 @@ Segment Routing Header (SRH), Network Service Header (NSH), Generic Network Virt
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 22 December 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 22 June 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1234,14 +1233,14 @@ they serve multiple purposes, including load balancing and network operations de
 By analyzing congestion data, network operators can identify and resolve bottlenecks, optimize traffic distribution,
 and ensure a balanced load across the network. This data-driven approach facilitates proactive network management,
 allowing for timely interventions that can preempt potential disruptions and enhance network reliability and performance.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">High Precision Congestion Control (HPCC)<span>[<a href="#I-D.draft-miao-ccwg-hpcc" class="cite xref">I-D.draft-miao-ccwg-hpcc</a>]</span>, leverages INT (Inband Network Telemetry)
+<p id="section-1-3">High Precision Congestion Control (HPCC) <span>[<a href="#I-D.miao-ccwg-hpcc" class="cite xref">I-D.miao-ccwg-hpcc</a>]</span>, leverages INT (In-band Network Telemetry)
 for detailed congestion signal collection but faces challenges with packet size increases and computational redundancy.
 This document proposed a different approach and introduces data fields for Congestion Measurement.
 Congestion Measurement expands the conventional single-bit ECN to multiple bits, allowing network devices
 to update congestion information at each hop more granularly. Consequently, when packets reach the receiver,
 the congestion information field in the packet indicates not only the presence of congestion but the degree of congestion across the link's path.
 This approach facilitates a richer set of data for decision-making, supporting not only more precise congestion control
-but also improving load balancing and network debugging efforts. By overcoming HPCC's shortcomings, our approach enhances network efficiency,
+but also improving load balancing and network debugging efforts. By overcoming HPCC's shortcomings, this approach enhances network efficiency,
 reduces computational overhead at endpoints, and offers a scalable solution to managing congestion in complex network environments.
 Congestion Measurement Data-Fields can be encapsulated into a variety of protocols, such as IPv6,
 Segment Routing Header (SRH), Network Service Header (NSH), Generic Network Virtualization Encapsulation (Geneve), etc.<a href="#section-1-3" class="pilcrow">¶</a></p>
@@ -1255,13 +1254,13 @@ Segment Routing Header (SRH), Network Service Header (NSH), Generic Network Virt
             <p id="section-1.1-1.1.1">CC: Congestion Control<a href="#section-1.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-1.1-1.2">
-            <p id="section-1.1-1.2.1">DRE: Discounting Rate Estimator<span>[<a href="#CONGA" class="cite xref">CONGA</a>]</span><a href="#section-1.1-1.2.1" class="pilcrow">¶</a></p>
+            <p id="section-1.1-1.2.1">DRE: Discounting Rate Estimator <span>[<a href="#CONGA" class="cite xref">CONGA</a>]</span><a href="#section-1.1-1.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-1.1-1.3">
             <p id="section-1.1-1.3.1">ECN: Explicit Congestion Notification<a href="#section-1.1-1.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-1.1-1.4">
-            <p id="section-1.1-1.4.1">HPCC: High Precision Congestion Control<span>[<a href="#I-D.draft-miao-ccwg-hpcc" class="cite xref">I-D.draft-miao-ccwg-hpcc</a>]</span><a href="#section-1.1-1.4.1" class="pilcrow">¶</a></p>
+            <p id="section-1.1-1.4.1">HPCC: High Precision Congestion Control <span>[<a href="#I-D.miao-ccwg-hpcc" class="cite xref">I-D.miao-ccwg-hpcc</a>]</span><a href="#section-1.1-1.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1285,7 +1284,7 @@ appear in all capitals, as shown here.<a href="#section-1.2-1" class="pilcrow">�
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
       </h2>
 <p id="section-2-1"><a href="#CM-procedure" class="auto internal xref">Figure 1</a> shows the overview procedure of Congestion Measurement.
-First the sender <span class="bcp14">MUST</span> sets the packet with data fields for Congestion Measurement (see <a href="#format" class="auto internal xref">Section 3</a>)
+First, the sender <span class="bcp14">MUST</span> sets the packet with data fields for Congestion Measurement (see <a href="#format" class="auto internal xref">Section 3</a>)
 which specifies what kind of the congestion information that the sending node intends to collect from transit nodes.
 As the packet traverses through the network, each router should inspect the data fields and update the Congestion Info Data field accordingly.
 Upon reaching the receiver, the updated congestion info data within the packet is extracted and then send back to the sender.
@@ -1352,11 +1351,11 @@ Measurement          Info               Info               Info
           <p id="section-3-6.1.1">Flags: An 8-bit field.<a href="#section-3-6.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3-6.1.2.1">
-              <p id="section-3-6.1.2.1.1">The first bit(U) indicates whether the Congestion Info Data field needs to be updated by transit nodes.
+              <p id="section-3-6.1.2.1.1">The first bit (U) indicates whether the Congestion Info Data field needs to be updated by transit nodes.
 If set, the transit nodes will update the Congestion Info Data. If not, the transit node will not update it.<a href="#section-3-6.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3-6.1.2.2">
-              <p id="section-3-6.1.2.2.1">The last bit(C) indicates that the Congestion Info Data is customized and used only in limited domain such as Data Center network.
+              <p id="section-3-6.1.2.2.1">The last bit (C) indicates that the Congestion Info Data is customized and used only in limited domain such as Data Center network.
 If the C is 0, the Congestion Info Type is a bitmap. Other bits are reserved.<a href="#section-3-6.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
@@ -1430,7 +1429,7 @@ The order of packing the data fields in the Congestion Info Data follows the bit
 <p id="section-3-9">The Congestion Info Data fields are:<a href="#section-3-9" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3-10.1">
-          <p id="section-3-10.1.1">Inflight Ratio is described in <span>[<a href="#I-D.draft-miao-ccwg-hpcc" class="cite xref">I-D.draft-miao-ccwg-hpcc</a>]</span> and further explained in <a href="#hpcc" class="auto internal xref">Section 4</a>.<a href="#section-3-10.1.1" class="pilcrow">¶</a></p>
+          <p id="section-3-10.1.1">Inflight Ratio is described in <span>[<a href="#I-D.miao-ccwg-hpcc" class="cite xref">I-D.miao-ccwg-hpcc</a>]</span> and further explained in <a href="#hpcc" class="auto internal xref">Section 4</a>.<a href="#section-3-10.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-3-10.2">
           <p id="section-3-10.2.1">DRE is defined in <span>[<a href="#CONGA" class="cite xref">CONGA</a>]</span>. It is a simple module for measuring the load of a link.
@@ -1458,7 +1457,7 @@ The congestion metric for the link is obtained by comparing it with the link spe
       <h2 id="name-hpcc-with-inflight-ratio">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-hpcc-with-inflight-ratio" class="section-name selfRef">HPCC with Inflight Ratio</a>
       </h2>
-<p id="section-4-1">As described in <span>[<a href="#I-D.draft-miao-ccwg-hpcc" class="cite xref">I-D.draft-miao-ccwg-hpcc</a>]</span>, HPCC calculates the inflight ratio of each link(represent the link utilization of the link)
+<p id="section-4-1">As described in <span>[<a href="#I-D.miao-ccwg-hpcc" class="cite xref">I-D.miao-ccwg-hpcc</a>]</span>, HPCC calculates the inflight ratio of each link(represent the link utilization of the link)
 from the collected raw load information carried in the p4.org INT.
 Then maximum inflight ratio along the path is identified and used to adjust the sending rate.
 The formula to calculate the inflight ratio of each link is shown below:<a href="#section-4-1" class="pilcrow">¶</a></p>
@@ -1588,7 +1587,7 @@ This registry defines code points for Flags, Congestion Info Type and Congestion
         <dd>
 <span class="refAuthor">Alizadeh, M.</span>, <span class="refAuthor">Edsall, T.</span>, <span class="refAuthor">Dharmapurikar, S.</span>, <span class="refAuthor">Vaidyanathan, R.</span>, <span class="refAuthor">Chu, K.</span>, <span class="refAuthor">Fingerhut, A.</span>, <span class="refAuthor">Lam, V.</span>, <span class="refAuthor">Matus, F.</span>, <span class="refAuthor">Pan, R.</span>, <span class="refAuthor">Yadav, N.</span>, and <span class="refAuthor">G. Varghese</span>, <span class="refTitle">"CONGA: distributed congestion-aware load balancing for datacenters"</span>, <span class="refContent">ACM</span>, <span class="seriesInfo">Proceedings of the 2014 ACM conference on SIGCOMM pp. 503-514</span>, <span class="seriesInfo">DOI 10.1145/2619239.2626316</span>, <time datetime="2014-08" class="refDate">August 2014</time>, <span>&lt;<a href="https://doi.org/10.1145/2619239.2626316">https://doi.org/10.1145/2619239.2626316</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="I-D.draft-miao-ccwg-hpcc">[I-D.draft-miao-ccwg-hpcc]</dt>
+<dt id="I-D.miao-ccwg-hpcc">[I-D.miao-ccwg-hpcc]</dt>
       <dd>
 <span class="refAuthor">Miao, R.</span>, <span class="refAuthor">Anubolu, S.</span>, <span class="refAuthor">Pan, R.</span>, <span class="refAuthor">Lee, J.</span>, <span class="refAuthor">Gafni, B.</span>, <span class="refAuthor">Tantsura, J.</span>, <span class="refAuthor">Alemania, A.</span>, and <span class="refAuthor">Y. Shpigelman</span>, <span class="refTitle">"HPCC++: Enhanced High Precision Congestion Control"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-miao-ccwg-hpcc-03</span>, <time datetime="2025-01-06" class="refDate">6 January 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-miao-ccwg-hpcc-03">https://datatracker.ietf.org/doc/html/draft-miao-ccwg-hpcc-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
