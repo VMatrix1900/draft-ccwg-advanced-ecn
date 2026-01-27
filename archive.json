@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-01-25T02:35:49.851639+00:00",
+  "timestamp": "2026-01-27T02:30:00.265088+00:00",
   "repo": "VMatrix1900/draft-ccwg-advanced-ecn",
   "labels": [
     {
@@ -313,7 +313,7 @@
       "id": "PR_kwDOJ5xDNM6oiDHw",
       "title": "upstream merge template repository",
       "url": "https://github.com/VMatrix1900/draft-ccwg-advanced-ecn/pull/9",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "VMatrix1900",
       "authorAssociation": "OWNER",
       "assignees": [],
@@ -322,13 +322,49 @@
       ],
       "body": "Merge https://github.com/martinthomson/internet-draft-template c920183",
       "createdAt": "2025-09-15T01:44:47Z",
-      "updatedAt": "2025-09-15T01:44:48Z",
+      "updatedAt": "2026-01-26T02:07:54Z",
       "baseRepository": "VMatrix1900/draft-ccwg-advanced-ecn",
       "baseRefName": "main",
       "baseRefOid": "4088aa25f2bfb5cf3e086c536d769ecbbccd7a16",
       "headRepository": "VMatrix1900/draft-ccwg-advanced-ecn",
       "headRefName": "chore/template_sync_c920183",
       "headRefOid": "30d9fb7cee67a214cbd2ecd14bbf784425318957",
+      "closedAt": "2026-01-26T02:07:52Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "OWNER",
+          "body": "[actions-template-sync] :construction_worker: automatically closed because there is a new open PR",
+          "createdAt": "2026-01-26T02:07:52Z",
+          "updatedAt": "2026-01-26T02:07:52Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOJ5xDNM6_R2fB",
+      "title": "upstream merge template repository",
+      "url": "https://github.com/VMatrix1900/draft-ccwg-advanced-ecn/pull/10",
+      "state": "OPEN",
+      "author": "VMatrix1900",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "template_sync"
+      ],
+      "body": "Merge https://github.com/martinthomson/internet-draft-template 15c7c96",
+      "createdAt": "2026-01-26T02:07:55Z",
+      "updatedAt": "2026-01-26T02:07:56Z",
+      "baseRepository": "VMatrix1900/draft-ccwg-advanced-ecn",
+      "baseRefName": "main",
+      "baseRefOid": "75224240eb2be066ee516c6cb3ed11fd78390037",
+      "headRepository": "VMatrix1900/draft-ccwg-advanced-ecn",
+      "headRefName": "chore/template_sync_15c7c96",
+      "headRefOid": "33a4818e94c10c8ea4a1e2a8d7f6cb7410394ec5",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
