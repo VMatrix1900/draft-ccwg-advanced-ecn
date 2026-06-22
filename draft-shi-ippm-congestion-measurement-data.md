@@ -68,8 +68,7 @@ to update the congestion information field in the packet. When the packet arrive
 the congestion information field will reflect the degree of congestion across network path.
 Congestion Measurement can enable precise congestion control, assist in effective load balancing,
 and simplify network debugging. This document defines data fields for Congestion Measurement.
-Congestion Measurement Data-Fields can be encapsulated into a variety of protocols, such as IPv6,
-Segment Routing Header (SRH), Network Service Header (NSH), Generic Network Virtualization Encapsulation (Geneve), etc.
+Congestion Measurement Data Fields can be encapsulated into a variety of protocols.
 
 --- middle
 
@@ -87,8 +86,11 @@ By analyzing congestion data, network operators can identify and resolve bottlen
 and ensure a balanced load across the network. This data-driven approach facilitates proactive network management,
 allowing for timely interventions that can preempt potential disruptions and enhance network reliability and performance.
 
-High Precision Congestion Control (HPCC) {{?I-D.miao-ccwg-hpcc}}, leverages INT (In-band Network Telemetry)
+High Precision Congestion Control (HPCC) {{?I-D.miao-ccwg-hpcc}}, leverages in-band network telemetry
 for detailed congestion signal collection but faces challenges with packet size increases and computational redundancy.
+In addition, {{?I-D.ravi-ippm-csig}} presented Congestion Signaling (CSIG), an in-band network telemetry protocol
+to explicitly notify the hosts of the bottleneck link metrics.
+
 This document proposed a different approach and introduces data fields for Congestion Measurement.
 Congestion Measurement expands the conventional single-bit ECN to multiple bits, allowing network devices
 to update congestion information at each hop more granularly. Consequently, when packets reach the receiver,
@@ -96,7 +98,7 @@ the congestion information field in the packet indicates not only the presence o
 This approach facilitates a richer set of data for decision-making, supporting not only more precise congestion control
 but also improving load balancing and network debugging efforts. By overcoming HPCC's shortcomings, this approach enhances network efficiency,
 reduces computational overhead at endpoints, and offers a scalable solution to managing congestion in complex network environments.
-Congestion Measurement Data-Fields can be encapsulated into a variety of protocols, such as IPv6,
+Congestion Measurement Data Fields can be encapsulated into a variety of protocols, such as IPv6,
 Segment Routing Header (SRH), Network Service Header (NSH), Generic Network Virtualization Encapsulation (Geneve), etc.
 
 ## Terminology
@@ -105,6 +107,7 @@ Segment Routing Header (SRH), Network Service Header (NSH), Generic Network Virt
 - DRE: Discounting Rate Estimator {{CONGA}}
 - ECN: Explicit Congestion Notification
 - HPCC: High Precision Congestion Control {{?I-D.miao-ccwg-hpcc}}
+- CSIG: Congestion Signaling {{?I-D.ravi-ippm-csig}}
 
 ## Requirements Language
 
@@ -200,7 +203,7 @@ The congestion metric for the link is obtained by comparing it with the link spe
 # HPCC with Inflight Ratio {#hpcc}
 
 As described in {{?I-D.miao-ccwg-hpcc}}, HPCC calculates the inflight ratio of each link(represent the link utilization of the link)
-from the collected raw load information carried in the p4.org INT.
+from the collected raw load information carried in the P4 In-Band Network Telemetry (INT).
 Then maximum inflight ratio along the path is identified and used to adjust the sending rate.
 The formula to calculate the inflight ratio of each link is shown below:
 
@@ -251,6 +254,10 @@ where:
 
 The reserved bandwidth takes into account the fairness of the CC algorithm, facilitating the entry of newly added flow.
 The value of R can be set according to the specific circumstances of each node, allowing TOR switches and backbone routers to reserve different percentages of bandwidth.
+
+# Operational Considerations
+
+TBD
 
 # Security Considerations
 
