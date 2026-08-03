@@ -5,10 +5,10 @@
 IP Performance Measurement                                   G. Fioccola
 Internet-Draft                                                   T. Zhou
 Intended status: Standards Track                                  Huawei
-Expires: 24 December 2026                                        G. Zhao
+Expires: 4 February 2027                                         G. Zhao
                                                                    Z. Li
                                                             China Mobile
-                                                            22 June 2026
+                                                           3 August 2026
 
 
                  Data Fields for Congestion Measurement
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 December 2026.
+   This Internet-Draft will expire on 4 February 2027.
 
 Copyright Notice
 
